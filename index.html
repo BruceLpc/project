@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+
+    <div style="display: none">
+        <img src="img/icon.jpg" alt="" />
+    </div>
+    <div class="wrap">
+        <div class="page1 wh ">
+            <img src="img/1-1.png" alt="" class="wh img1">
+            <img src="img/1-2.png" alt="" class="wh img2">
+            <img src="img/1-3.png" alt="" class="wh img3">
+            <div class="input-wrap">
+                <input id="cardId" type="text">
+                <input id="name" type="text">
+            </div>
+            <img src="img/open-btn.png" class="open-btn" alt="">
+        </div>
+        <div class="page2 wh hide">
+            <img src="img/2-2.png" alt="" class="wh img1">
+            <img src="img/2-1.png" alt="" class="wh img2">
+            <div id="partner"></div>
+            <div class="make-wrap">
+                <img id="makeImg" alt="">
+            </div>
+            <img src="img/share-btn.png" alt="" class="share-btn">
+        </div>
+    </div>
+
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="https://wb.jaas.ac.cn/CommonJS/js/jquery-1.10.2.min.js"></script>
+    <script src="https://wb.jaas.ac.cn/CommonJS/js/jquery.cookie.js"></script>
+    <script src="https://wb.jaas.ac.cn/CommonJS/js/commons.js"></script>
+    <script src="js/html2canvas.min.js"></script>
+
+    <script src="js/audio.js"></script>
+    <script>
+        $(function () {
+            $('.open-btn').on('click', Save)
+        })
+
+        function Save() {
+            var cardId = $('#cardId').val().trim()
+            var name = $('#name').val().trim()
+
+            name = '李强'
+            cardId = 'CN1440988'
+            if (cardId === '') {
+                alert('资格证号不能为空')
+                return
+            }
+
+            if (name === '') {
+                alert('姓名不能为空')
+                return
+            }
+
+            loadJson('./data.json', function (res) {
+
+                var isMatch = MatchCardOrName(res, cardId, name)
+
+                if (isMatch) {
+                    $('.page1').hide()
+                    $('.page2').show()
+                    $('#partner').html(name)
+
+                    setTimeout(() => {
+                        SaveImg()
+                    }, 2000);
+                } else {
+                    alert('匹配失败')
+                }
+            })
+
+        }
+
+        function MatchCardOrName(data, cardId, name) {
+
+            for (var i = 0, len = data.length; i < len; i++) {
+                var item = data[i]
+                if (item.cardId == cardId && item.name == name) {
+                    console.log('匹配成功')
+                    return true
+                }
+            }
+
+            return false
+        }
+
+        function SaveImg() {
+            setTimeout(function () {
+                html2canvas($(".page2"), {
+                    onrendered: function (canvas) {
+                        var makeWrap = $('.make-wrap')[0]
+                        makeWrap.appendChild(canvas);
+                        var url = canvas.toDataURL();
+                        // var img = document.createElement("img");
+                        // img.src = url;
+                        // myFimg.appendChild(img);
+                        $("#makeImg").attr('src', url)
+                    }
+                })
+            }, 500)
+        }
+
+        function loadJson(url, callback) {
+            $.getJSON(url, function (json) {
+                callback && callback(json)
+            })
+        }
+    </script>
+
+</body>
+
+</html>

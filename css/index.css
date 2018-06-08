@@ -1,0 +1,132 @@
+.w-h {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/*page1*/
+
+/* @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+   	    body{height:90%;top:3%;background: #000;}
+	} */
+
+.wrap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.page1 {
+    background: url(../img/1.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+
+.page1 .img1 {
+    -webkit-animation: rotateInDownLeft 1s ease both;
+}
+
+.page1 .img2 {
+    -webkit-animation: zoomIn 1.5s ease 0.2s both;
+}
+
+.page1 .img3 {
+    -webkit-animation: zoomOut 1.5s ease 0.8s both;
+}
+
+.page1 .input-wrap {
+    position: absolute;
+    width: 62vw;
+    height: 12vh;
+    top: 60%;
+    left: 18vw;
+}
+
+input {
+    background: transparent;
+    position: absolute;
+    font-size: 18px;
+    color: #3f8a70;
+    border: none;
+    outline: none;
+}
+
+input#cardId {
+    left: 34%;
+    width: 67%;
+    top: 11%;
+}
+
+input#name {
+    left: 20%;
+    width: 81%;
+    bottom: 3%;
+}
+
+.page1 .open-btn {
+    position: absolute;
+    width: 44%;
+    left: 28%;
+    bottom: 8%;
+    height: auto;
+    -webkit-animation: zoomIn 1s ease 2s backwards, bigger 2s ease infinite alternate 3s forwards;
+}
+
+@-webkit-keyframes bigger {
+    0% {
+        -webkit-transform: scale(1, 1)
+    }
+    100% {
+        -webkit-transform: scale(0.9, 0.9)
+    }
+}
+
+/* page2 */
+
+.page2 {
+    background: url(../img/2.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+
+.page2 .img1 {
+    -webkit-animation: fadeFromTop 1s ease both;
+}
+
+.page2 .img2 {
+    -webkit-animation: zoomOut 1.5s ease 0.2s both;
+}
+
+.page2 .share-btn {
+    position: absolute;
+    width: 34%;
+    left: 33%;
+    bottom: 16%;
+    height: auto;
+    -webkit-animation: zoomIn 1s ease 1s backwards;
+    z-index:999
+}
+
+.page2 #partner {
+    position: absolute;
+    left: 10%;
+    top: 10%;
+    width: 10%;
+    left: 46%;
+    top: 24.8%;
+    width: 32%;
+    font-style: italic;
+    color: #192a45;
+    font-size: 18px;
+    overflow: hidden;
+    white-space: nowrap;
+    -webkit-animation: fadeIn 1s ease 1s both;
+}
+
+.page2 .make-wrap{
+    position: absolute;
+    width:100%;
+    height:100%;
+    lefT:0;
+    top:0;
+    z-index:99;
+
+}
