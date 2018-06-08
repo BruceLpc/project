@@ -85,6 +85,7 @@ input#name {
 .page2 {
     background: url(../img/2.jpg) no-repeat;
     background-size: 100% 100%;
+    overflow: hidden;
 }
 
 .page2 .img1 {
@@ -95,14 +96,14 @@ input#name {
     -webkit-animation: zoomOut 1.5s ease 0.2s both;
 }
 
-.page2 .share-btn {
+.page2 .share_btn {
     position: absolute;
     width: 34%;
     left: 33%;
     bottom: 16%;
     height: auto;
     -webkit-animation: zoomIn 1s ease 1s backwards;
-    z-index:999
+    z-index: 999
 }
 
 .page2 #partner {
@@ -121,12 +122,12 @@ input#name {
     -webkit-animation: fadeIn 1s ease 1s both;
 }
 
-.page2 .make-wrap{
+.page2 .make-wrap {
     position: absolute;
-    width:100%;
-    height:100%;
-    lefT:0;
-    top:0;
-    z-index:99;
-
+    width: 100%;
+    height: 100%;
+    lefT: 0;
+    top: 0;
+    z-index: 99;
+    overflow: hidden;
 }
